@@ -1,7 +1,7 @@
 class CreateReimbursements < ActiveRecord::Migration
   def change
     create_table :reimbursements do |t|
-      t.double :total
+      t.decimal :total
       t.string :description
       t.date :request_date
       t.string :status
