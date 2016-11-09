@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total: 
+  description: MyString
+  request_date: 2016-11-09
+  status: MyString
+  approval_date: 2016-11-09
+  requester_id: 1
+  event_id: 1
+
+two:
+  total: 
+  description: MyString
+  request_date: 2016-11-09
+  status: MyString
+  approval_date: 2016-11-09
+  requester_id: 1
+  event_id: 1
