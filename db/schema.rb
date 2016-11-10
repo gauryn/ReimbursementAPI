@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 20161109192455) do
   create_table "user_orgs", force: :cascade do |t|
     t.string   "role"
     t.boolean  "active"
-    t.integer  "org_id"
+    t.integer  "organization_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|

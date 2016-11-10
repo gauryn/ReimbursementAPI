@@ -3,7 +3,7 @@ class CreateUserOrgs < ActiveRecord::Migration
     create_table :user_orgs do |t|
       t.string :role
       t.boolean :active
-      t.integer :org_id
+      t.integer :organization_id
       t.integer :user_id
 
       t.timestamps null: false
