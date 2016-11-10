@@ -4,6 +4,7 @@ class CreateEvents < ActiveRecord::Migration
       t.date :event_date
       t.string :location
       t.integer :num_of_attendees
+      t.integer :organization_id
 
       t.timestamps null: false
     end
