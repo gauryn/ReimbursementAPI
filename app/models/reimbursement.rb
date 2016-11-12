@@ -15,5 +15,50 @@ class Reimbursement < ActiveRecord::Base
 	validates_date :approval_date, on: :today, on: :update
 
 	# Scopes
+	scope :chronological, -> { order("request_date") }
+	scope :chronological_approval, -> {order('approval_date')}
+	scope :order_total_descending, -> {order('total DESC')}
+	# Order By Event
+	scope :by_event, -> {joins(:event).order('name')}
+	# Status of Reimbursement Request
+	scope :pending, -> {where(status: 'Pending')}
+	scope :submitted, -> {where(status: 'Submitted')}
+	scope :approved, -> {where(status: 'Approved')}
+	# For events, users, orgs
+	scope :for_event, ->(event_id) { where('event_id = ?', event_id) }
+	scope :for_user, -> (user_id) { joins(:user_org).where('user_id = ?', user_id) }
+	scope :for_organization, -> (organization_id) {joins(:event).where('organization_id = ?', organization_id)}
+
+	# Methods
+
+	# signer for particular request
+	def get_signer_info
+		signers_for_org = UserOrg.signers_for_organization(self.user_org.organization_id)
+		for s in signers_for_org
+			if self.approval_date >= s.start_date and self.approval_date <= s.end_date
+				return s 
+			end
+		end
+		return nil
+	end
+
+	def approve
+		if !check_if_authorized?
+			return false
+		end
+		self.approval_date = Date.now()
+		self.status = 'Approved'
+		self.save!
+		return true
+	end
+
+	private
+	def check_if_authorized?
+		user_org = UserOrg.find(self.user_org_id)
+		if user_org.role == 'Signer'
+			return true
+		end
+		return false
+	end
 
 end

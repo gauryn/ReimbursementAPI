@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20161109192455) do
 
   create_table "events", force: :cascade do |t|
     t.date     "event_date"
+    t.string   "name"
     t.string   "location"
     t.integer  "num_of_attendees"
     t.integer  "organization_id"
@@ -43,7 +44,8 @@ ActiveRecord::Schema.define(version: 20161109192455) do
 
   create_table "user_orgs", force: :cascade do |t|
     t.string   "role"
-    t.boolean  "active"
+    t.date     "start_date"
+    t.date     "end_date"
     t.integer  "organization_id"
     t.integer  "user_id"
     t.datetime "created_at",      null: false
