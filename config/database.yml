@@ -20,6 +20,12 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  username: gaurynagaraju
+
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: db/production
