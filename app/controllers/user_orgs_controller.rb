@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UserOrgsController < ApplicationController
 	before_action :set_user_org, only: [:show, :update, :destroy]
 
   # GET /user_orgs
