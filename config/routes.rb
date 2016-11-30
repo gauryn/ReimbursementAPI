@@ -9,6 +9,5 @@ Rails.application.routes.draw do
   resources :sessions
 
   # Root
-  root 'home#index'
 
 end
