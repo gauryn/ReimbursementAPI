@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :reimbursements 
   resources :sessions
 
+  # Root
+  root 'home#index'
+
 end
