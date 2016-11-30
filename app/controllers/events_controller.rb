@@ -12,6 +12,10 @@ class EventsController < ApplicationController
     render json: @event
   end
 
+  def new
+    @event = Event.new()
+  end
+
   # POST /events
   # POST /events.json
   def create
@@ -22,6 +26,10 @@ class EventsController < ApplicationController
     else
       render json: @event.errors, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    
   end
 
   # PATCH/PUT /events/1

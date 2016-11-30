@@ -3,13 +3,13 @@
 one:
   first_name: MyString
   last_name: MyString
-  andrewID: MyString
+  andrewid: MyString
   email: MyString
   smc: 1
 
 two:
   first_name: MyString
   last_name: MyString
-  andrewID: MyString
+  andrewid: MyString
   email: MyString
   smc: 1

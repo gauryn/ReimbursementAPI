@@ -12,6 +12,10 @@ class UsersController < ApplicationController
     render json: @user
   end
 
+  def new
+    @user = User.new
+  end
+
   # POST /users
   # POST /users.json
   def create
@@ -22,6 +26,9 @@ class UsersController < ApplicationController
     else
       render json: @user.errors, status: :unprocessable_entity
     end
+  end
+
+  def edit
   end
 
   # PATCH/PUT /users/1
@@ -51,6 +58,11 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :andrewID, :email, :smc)
+      puts :first_name
+      puts :last_name
+      puts :andrewid
+      puts :email
+      puts :smc
+      params.require(:user).permit(:first_name, :last_name, :andrewid, :email, :smc)
     end
 end

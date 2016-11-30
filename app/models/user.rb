@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 	has_many :reimbursements, through: :user_orgs
 
 	# Validations
-	validates_presence_of :first_name, :last_name, :andrewID
+	validates_presence_of :first_name, :last_name, :andrewid
 	validates_format_of :smc, with: /\A\d{4}\z/, message: "should be four digits long"
 	# allow gmail.com or andrew.cmu.edu accounts only
 	validates_format_of :email, with: /\A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|))\z/i, message: "is not a valid format"
@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
 	end
 
 	def role_in_organization (org_id)
-		user_org = UserOrg.where('user_id = ? AND organization_id = ?' self.id, org_id).first
+		user_org = UserOrg.where('user_id = ? AND organization_id = ?' "#{self.id}", "#{org_id}").first
 		return user_org.role
 	end
 

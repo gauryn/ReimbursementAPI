@@ -12,6 +12,10 @@ class ReimbursementsController < ApplicationController
     render json: @reimbursement
   end
 
+  def new
+    @reimbursement = Reimbursement.new()
+  end
+
   # POST /reimbursements
   # POST /reimbursements.json
   def create
@@ -22,6 +26,9 @@ class ReimbursementsController < ApplicationController
     else
       render json: @reimbursement.errors, status: :unprocessable_entity
     end
+  end
+
+  def edit
   end
 
   # PATCH/PUT /reimbursements/1

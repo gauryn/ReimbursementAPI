@@ -12,6 +12,10 @@ class UserOrgsController < ApplicationController
     render json: @user_org
   end
 
+  def new
+    @user_org = UserOrg.new
+  end
+
   # POST /user_orgs
   # POST /user_orgs.json
   def create
@@ -22,6 +26,9 @@ class UserOrgsController < ApplicationController
     else
       render json: @user_org.errors, status: :unprocessable_entity
     end
+  end
+
+  def edit
   end
 
   # PATCH/PUT /user_orgs/1
