@@ -10,4 +10,4 @@ curl -v -H 'Content-Type: application/json' -H 'Accept: application/json' -X POS
 
 curl -v -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -d '{"user":{"first_name":"TestF1", "last_name":"TestL1", "andrewid":"testa1", "email":"test1@ex.com", "smc":1234}}' https://reimbursementapi.herokuapp.com/users/
 
-curl -v -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -d '{"reimbursement":{"event_date": "2016-11-30", "event_name": "Test Event", "event_location": "PWM", "num_of_attendees": 20, "organization": "Emerging Leaders","total": 20,"description": "Test Description"}}' http://localhost:3000/reimbursements/
+curl -v -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -d '{"reimbursement":{"event_date": "2016-11-30", "event_name": "Test Event 2", "event_location": "PWM", "num_of_attendees": 20, "organization": "Emerging Leaders","total": 20,"description": "Test Description 2"}}' https://reimbursementapi.herokuapp.com/reimbursements/
