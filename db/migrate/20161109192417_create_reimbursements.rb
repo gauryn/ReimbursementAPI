@@ -12,7 +12,7 @@ class CreateReimbursements < ActiveRecord::Migration
       t.string :event_name
       t.string :event_location
       t.integer :num_of_attendees
-      t.integer :organization_id
+      t.string :organization
 
       t.timestamps null: false
     end

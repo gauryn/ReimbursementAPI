@@ -3,7 +3,7 @@ class Reimbursement < ActiveRecord::Base
 	# Relations
 	# belongs_to :event
 	belongs_to :user_org
-	belongs_to :organization
+	# belongs_to :organization
 
 	# Reimbursement Validations
 	validates_numericality_of :total, greater_than: 0
@@ -15,10 +15,10 @@ class Reimbursement < ActiveRecord::Base
 	validates_date :approval_date, on: :today, allow_nil: true, on: :create
 	validates_date :approval_date, on: :today, on: :update
 	# Event Validation
-	validates_presence_of :event_location, :event_name
+	validates_presence_of :event_location, :event_name, :organization
 	validates_date :event_date, on_or_before: :today
 	validates_numericality_of :num_of_attendees
-	validate :organization_is_active
+	# validate :organization_is_active
 
 	# Scopes
 	scope :chronological, -> { order("request_date") }

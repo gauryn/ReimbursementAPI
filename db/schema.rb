@@ -40,9 +40,13 @@ ActiveRecord::Schema.define(version: 20161109192455) do
     t.string   "status"
     t.date     "approval_date"
     t.integer  "requester_id"
-    t.integer  "event_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.date     "event_date"
+    t.string   "event_name"
+    t.string   "event_location"
+    t.integer  "num_of_attendees"
+    t.integer  "organization_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "user_orgs", force: :cascade do |t|
