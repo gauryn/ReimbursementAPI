@@ -2,7 +2,7 @@ class Reimbursement < ActiveRecord::Base
 
 	# Relations
 	# belongs_to :event
-	belongs_to :user_org
+	# belongs_to :user_org
 	# belongs_to :organization
 
 	# Reimbursement Validations

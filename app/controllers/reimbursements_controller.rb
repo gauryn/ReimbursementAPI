@@ -58,6 +58,6 @@ class ReimbursementsController < ApplicationController
     end
 
     def reimbursement_params
-      params.require(:reimbursement).permit(:total, :description, :request_date, :status, :approval_date, :requester_id, :event_id)
+      params.require(:reimbursement).permit(:total, :description, :request_date, :status, :approval_date, :event_date, :event_name, :event_location, :num_of_attendees, :organization )
     end
 end

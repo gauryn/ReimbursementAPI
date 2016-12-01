@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20161109192455) do
     t.string   "event_name"
     t.string   "event_location"
     t.integer  "num_of_attendees"
-    t.integer  "organization_id"
+    t.string   "organization"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
