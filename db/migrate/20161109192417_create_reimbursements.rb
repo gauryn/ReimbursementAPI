@@ -7,7 +7,12 @@ class CreateReimbursements < ActiveRecord::Migration
       t.string :status
       t.date :approval_date
       t.integer :requester_id
-      t.integer :event_id
+      # t.integer :event_id
+      t.date :event_date
+      t.string :event_name
+      t.string :event_location
+      t.integer :num_of_attendees
+      t.integer :organization_id
 
       t.timestamps null: false
     end

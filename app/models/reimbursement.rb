@@ -1,10 +1,11 @@
 class Reimbursement < ActiveRecord::Base
 
 	# Relations
-	belongs_to :event
+	# belongs_to :event
 	belongs_to :user_org
+	belongs_to :organization
 
-	# Validations
+	# Reimbursement Validations
 	validates_numericality_of :total, greater_than: 0
 	validates_presence_of :description
 	validates_inclusion_of :status, in: %w[Pending Submitted Approved], message: "is not an option"
@@ -13,6 +14,11 @@ class Reimbursement < ActiveRecord::Base
 	validates_date :request_date, on: :today, on: :update
 	validates_date :approval_date, on: :today, allow_nil: true, on: :create
 	validates_date :approval_date, on: :today, on: :update
+	# Event Validation
+	validates_presence_of :event_location, :event_name
+	validates_date :event_date, on_or_before: :today
+	validates_numericality_of :num_of_attendees
+	validate :organization_is_active
 
 	# Scopes
 	scope :chronological, -> { order("request_date") }
@@ -59,6 +65,13 @@ class Reimbursement < ActiveRecord::Base
 			return true
 		end
 		return false
+	end
+
+	def organization_is_active
+		all_current_orgs = Organization.active.to_a.map{|o| o.id}
+	    unless all_current_organizations.include?(self.organization_id)
+	      errors.add(:organization_id, "is not an active organization")
+	    end
 	end
 
 end

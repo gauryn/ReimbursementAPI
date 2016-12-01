@@ -6,4 +6,6 @@ GET Request
 POST Request
 
 - Create New User
-curl -v -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -d '{"user":{"first_name":"TestF2", "last_name":"TestL2", "andrewid":"testa2", "email":"test2@ex.com", "smc":5678}}' http://localhost:3000/users/
+curl -v -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -d '{"user":{"first_name":"TestF2", "last_name":"TestL2", "andrewid":"testa2", "email":"test2@ex.com", "smc":5678}}' http://localhost:3000/users
+
+curl -v -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -d '{"user":{"first_name":"TestF1", "last_name":"TestL1", "andrewid":"testa1", "email":"test1@ex.com", "smc":1234}}' https://reimbursementapi.herokuapp.com/users/
