@@ -20,7 +20,7 @@ class ReimbursementsController < ApplicationController
   # POST /reimbursements.json
   def create
     @reimbursement = Reimbursement.new(reimbursement_params)
-
+    @reimbursement.status = 'Submitted'
     if @reimbursement.save
       render json: @reimbursement, status: :created, location: @reimbursement
     else
@@ -58,6 +58,6 @@ class ReimbursementsController < ApplicationController
     end
 
     def reimbursement_params
-      params.require(:reimbursement).permit(:total, :description, :request_date, :status, :approval_date, :event_date, :event_name, :event_location, :num_of_attendees, :organization )
+      params.require(:reimbursement).permit(:total, :description, :request_date, :approval_date, :event_date, :event_name, :event_location, :num_of_attendees, :organization )
     end
 end
