@@ -6,6 +6,7 @@ class ReimbursementsController < ApplicationController
   def index
     # TO BE FIXED: Return for user rather than all requests
     @reimbursements = Reimbursement.chronological
+    render json: @reimbursements
   end
 
   # GET /reimbursements/1
