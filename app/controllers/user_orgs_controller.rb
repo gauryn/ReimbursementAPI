@@ -20,7 +20,8 @@ class UserOrgsController < ApplicationController
   # POST /user_orgs.json
   def create
     @user_org = UserOrg.new(user_org_params)
-
+    # By default, currently all students are org members
+    @user_org.role = "Member"
     if @user_org.save
       render json: @user_org, status: :created, location: @user_org
     else

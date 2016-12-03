@@ -37,8 +37,6 @@ ActiveRecord::Schema.define(version: 20161109192455) do
     t.decimal  "total"
     t.string   "description"
     t.date     "request_date"
-    t.string   "status"
-    t.date     "approval_date"
     t.integer  "requester_id"
     t.date     "event_date"
     t.string   "event_name"

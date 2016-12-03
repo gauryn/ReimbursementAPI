@@ -17,7 +17,7 @@ class UserOrg < ActiveRecord::Base
 	has_many :reimbursements
 
 	# Validations
-	validates_inclusion_of :role, in: %w[Member Signer PContact], message: 'is not an option'
+	# validates_inclusion_of :role, in: %w[Member Signer PContact], message: 'is not an option'
 	validates_date :start_date, on: :today, on: :create
 
 	# Scope
