@@ -12,8 +12,8 @@ class Reimbursement < ActiveRecord::Base
 	# validates_inclusion_of :status, in: %w[Pending Submitted], on: :create, message: 'is not an option'
 	validates_date :request_date, on: :today, allow_nil: true, on: :create
 	validates_date :request_date, on: :today, on: :update
-	validates_date :approval_date, on: :today, allow_nil: true, on: :create
-	validates_date :approval_date, on: :today, on: :update
+	# validates_date :approval_date, on: :today, allow_nil: true, on: :create
+	# validates_date :approval_date, on: :today, on: :update
 	# Event Validation
 	validates_presence_of :event_location, :event_name, :organization
 	validates_date :event_date, on_or_before: :today
@@ -22,14 +22,14 @@ class Reimbursement < ActiveRecord::Base
 
 	# Scopes
 	scope :chronological, -> { order("request_date") }
-	scope :chronological_approval, -> {order('approval_date')}
+	# scope :chronological_approval, -> {order('approval_date')}
 	scope :order_total_descending, -> {order('total DESC')}
 	# Order By Event
 	scope :by_event, -> {joins(:event).order('name')}
 	# Status of Reimbursement Request
-	scope :pending, -> {where(status: 'Pending')}
-	scope :submitted, -> {where(status: 'Submitted')}
-	scope :approved, -> {where(status: 'Approved')}
+	# scope :pending, -> {where(status: 'Pending')}
+	# scope :submitted, -> {where(status: 'Submitted')}
+	# scope :approved, -> {where(status: 'Approved')}
 	# For events, users, orgs
 	scope :for_event, ->(event_id) { where('event_id = ?', event_id) }
 	scope :for_user, -> (user_id) { joins(:user_org).where('user_id = ?', user_id) }
@@ -48,15 +48,15 @@ class Reimbursement < ActiveRecord::Base
 		return nil
 	end
 
-	def approve
-		if !check_if_authorized?
-			return false
-		end
-		self.approval_date = Date.now()
-		self.status = 'Approved'
-		self.save!
-		return true
-	end
+	# def approve
+	# 	if !check_if_authorized?
+	# 		return false
+	# 	end
+	# 	self.approval_date = Date.now()
+	# 	self.status = 'Approved'
+	# 	self.save!
+	# 	return true
+	# end
 
 	private
 	def check_if_authorized?
