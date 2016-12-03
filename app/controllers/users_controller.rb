@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    @users = User.alphabetical
+    render json: @users
   end
 
   # GET /users/1
@@ -22,6 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      session[:user_id] = @user.id
       render json: @user, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -63,6 +66,6 @@ class UsersController < ApplicationController
       puts :andrewid
       puts :email
       puts :smc
-      params.require(:user).permit(:first_name, :last_name, :andrewid, :email, :smc)
+      params.require(:user).permit(:first_name, :last_name, :andrewid, :email, :smc, :password, :password_confirmation)
     end
 end

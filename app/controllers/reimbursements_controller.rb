@@ -1,4 +1,6 @@
 class ReimbursementsController < ApplicationController
+
+  before_action :check_login
 	before_action :set_reimbursement, only: [:show, :update, :destroy]
 
   # GET /reimbursements

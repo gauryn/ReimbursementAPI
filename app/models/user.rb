@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+	# Built-in Rails support for password protection
+	has_secure_password
+
 	# Relations
 	has_many :user_orgs
 	has_many :reimbursements, through: :user_orgs
@@ -46,6 +49,14 @@ class User < ActiveRecord::Base
 
 	def proper_name
 		first_name + " " + last_name
+	end
+
+	def name
+		last_name + ", " + first_name
+	end
+
+	def self.authenticate(andrewid, password)
+		find_by(andrewid: andrewid).try(:authenticate, password)
 	end
 
 	# ASSUME THAT SIGNER IS ALREADY A MEMBER OF ORG IN APP
