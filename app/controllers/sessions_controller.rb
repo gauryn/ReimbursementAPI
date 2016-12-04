@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		user = find_by(andrewid: params[:andrewid])
+		user = find_by andrewid: params[:andrewid]
 		if user && user.authenticate(params[:password])
 		  session[:user_id] = user.id
 		  # redirect_to root_url, notice: "Logged in!"
