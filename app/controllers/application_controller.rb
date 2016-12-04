@@ -18,6 +18,7 @@ class ApplicationController < ActionController::API
 	def check_login
 		# redirect_to login_url, alert: "You need to log in to view this page." if current_user.nil?
 		unless logged_in?
+		  render json: "Please log in", :status => bad_request
 			redirect_to login_url
 		end
 	end

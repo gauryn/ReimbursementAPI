@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 	resources :reimbursements 
 	resources :sessions
 
-	get 'login' => 'sessions#new', :as => :login
+	get 'login' => 'sessions#create', :as => :login
 	get 'logout' => 'sessions#destroy', :as => :logout
 
 	# Root
