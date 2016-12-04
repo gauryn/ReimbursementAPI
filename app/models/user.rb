@@ -12,6 +12,11 @@ class User < ActiveRecord::Base
 	validates_format_of :smc, with: /\A\d{4}\z/, message: "should be four digits long"
 	# allow gmail.com or andrew.cmu.edu accounts only
 	validates_format_of :email, with: /\A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|))\z/i, message: "is not a valid format"
+	validates_presence_of :password, on: :create 
+	validates_presence_of :password_confirmation, on: :create 
+	validates_confirmation_of :password, message: "does not match"
+	validates_length_of :password, minimum: 4, message: "must be at least 4 characters long", allow_blank: true
+
 
 	# Scope
 	scope :alphabetical, -> {order('last_name, first_name')} 
