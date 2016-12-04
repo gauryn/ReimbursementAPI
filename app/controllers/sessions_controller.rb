@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 		else
 		  # flash.now.alert = "Email or password is invalid"
 		  # render "new"
-		  render json: "Invalid Credentials", :status => bad_request
+		  render json: "Invalid Credentials", status: 400
 		end
 	end
 
