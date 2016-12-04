@@ -18,7 +18,7 @@ class ReimbursementsController < ApplicationController
   end
 
   def new
-    @reimbursement = Reimbursement.new()
+    @reimbursement = Reimbursement.new
   end
 
   # POST /reimbursements
