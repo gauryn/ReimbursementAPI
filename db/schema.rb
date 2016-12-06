@@ -51,7 +51,8 @@ ActiveRecord::Schema.define(version: 20161204000115) do
     t.string   "role"
     t.date     "start_date"
     t.date     "end_date"
-    t.integer  "organization_id"
+    # t.integer  "organization_id"
+    t.string   "organization"
     t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
