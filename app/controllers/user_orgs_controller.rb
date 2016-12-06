@@ -4,6 +4,8 @@ class UserOrgsController < ApplicationController
   # GET /user_orgs
   # GET /user_orgs.json
   def index
+    @user_orgs = UserOrg.active
+    render json: @user_orgs
   end
 
   # GET /user_orgs/1
@@ -20,6 +22,7 @@ class UserOrgsController < ApplicationController
   # POST /user_orgs.json
   def create
     @user_org = UserOrg.new(user_org_params)
+    print("User Org: ", @user_org)
     # By default, currently all students are org members
     @user_org.role = "Member"
     if @user_org.save
@@ -59,6 +62,6 @@ class UserOrgsController < ApplicationController
     end
 
     def user_org_params
-      params.require(:user_org).permit(:role, :active, :organization_id, :user_id)
+      params.require(:user_org).permit(:role, :start_date, :organization, :user_id)
     end
 end

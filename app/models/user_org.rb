@@ -13,7 +13,7 @@ class UserOrg < ActiveRecord::Base
 
 	# Relations
 	belongs_to :user 
-	belongs_to :organization
+	# belongs_to :organization
 	has_many :reimbursements
 
 	# Validations
@@ -21,8 +21,9 @@ class UserOrg < ActiveRecord::Base
 	validates_date :start_date, on: :today, on: :create
 
 	# Scope
-	scope :active, -> {where(active: true)}
-	scope :inactive, -> {where(active: false)}
+	scope :alphabetical, -> {order('organization')}
+	scope :active, -> {where("end_date is null")}
+	# scope :inactive, -> {where(active: false)}
 	scope :organizations, -> (user_id){group()}
 	# List of signers for organization
 	# scope :signers_for_organization, -> (organization_id) {where('organization_id=?', organization_id)}

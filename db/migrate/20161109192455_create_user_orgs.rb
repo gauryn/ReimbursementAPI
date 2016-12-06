@@ -4,7 +4,8 @@ class CreateUserOrgs < ActiveRecord::Migration
       t.string :role
       t.date :start_date
       t.date :end_date
-      t.integer :organization_id
+      # t.integer :organization_id
+      t.string :organization
       t.integer :user_id
 
       t.timestamps null: false
