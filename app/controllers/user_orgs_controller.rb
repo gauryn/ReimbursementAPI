@@ -1,4 +1,6 @@
 class UserOrgsController < ApplicationController
+
+  before_action :check_login
 	before_action :set_user_org, only: [:show, :update, :destroy]
 
   # GET /user_orgs
