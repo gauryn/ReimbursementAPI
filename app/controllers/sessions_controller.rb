@@ -12,13 +12,15 @@ class SessionsController < ApplicationController
 		else
 		  # flash.now.alert = "Email or password is invalid"
 		  # render "new"
-		  render json: "Invalid Credentials", status: 400
+		  logged_in = false
+		  render json: logged_in, status: 400
 		end
 	end
 
 	def destroy
 		session[:user_id] = nil
-		render json: "Successful Logout", status: 200
+		logged_out = true
+		render json: logged_out, status: 200
 	end
 
 end
