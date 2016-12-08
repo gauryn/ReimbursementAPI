@@ -13,6 +13,7 @@ class CreateReimbursements < ActiveRecord::Migration
       t.string :event_location
       t.integer :num_of_attendees
       t.string :organization
+      t.string :receipt_images
 
       t.timestamps null: false
     end

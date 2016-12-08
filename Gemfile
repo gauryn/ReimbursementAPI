@@ -41,6 +41,9 @@ gem 'bcrypt'
 gem 'carrierwave'
 gem 'fog'
 
+# AWS-SDK Gem for RoR
+gem 'aws-sdk-rails'
+
 # Heroku gems
 gem 'pg'
 gem 'rails_12factor', group: :production
