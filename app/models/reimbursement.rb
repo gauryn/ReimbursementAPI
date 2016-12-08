@@ -5,6 +5,9 @@ class Reimbursement < ActiveRecord::Base
 	# belongs_to :user_org
 	# belongs_to :organization
 
+	# Receipts Uploader
+	mount_base64_uploader :receipt_images, ReceiptImagesUploader
+
 	# Reimbursement Validations
 	validates_numericality_of :total, greater_than: 0
 	validates_presence_of :description
