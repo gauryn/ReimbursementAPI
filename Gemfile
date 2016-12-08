@@ -39,6 +39,7 @@ gem 'bcrypt'
 
 # Use Uploader Gem
 gem 'carrierwave'
+gem 'fog'
 
 # Heroku gems
 gem 'pg'

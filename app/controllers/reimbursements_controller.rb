@@ -29,7 +29,7 @@ class ReimbursementsController < ApplicationController
   def create
     @reimbursement = Reimbursement.new(reimbursement_params)
     # requester set to current user
-    @reimbursement.requester_id = User.find(session[:user_id])
+    @reimbursement.requester_id = session[:user_id]
     @reimbursement.request_date = Date.today()
     # @reimbursement.status = 'Submitted'
     if @reimbursement.save
@@ -46,7 +46,6 @@ class ReimbursementsController < ApplicationController
   # PATCH/PUT /reimbursements/1.json
   def update
     @reimbursement = Reimbursement.find(params[:id])
-
     if @reimbursement.update(reimbursement_params)
       head :no_content
     else
