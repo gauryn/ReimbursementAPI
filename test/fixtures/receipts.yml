@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  receipt_images: MyString
+  reimbursement_id: MyString
+  integer: MyString
+
+two:
+  receipt_images: MyString
+  reimbursement_id: MyString
+  integer: MyString

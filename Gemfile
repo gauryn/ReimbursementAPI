@@ -37,6 +37,13 @@ gem 'bcrypt'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use Uploader Gem
+gem 'carrierwave'
+gem 'fog'
+
+# AWS-SDK Gem for RoR
+gem 'aws-sdk-rails'
+
 # Heroku gems
 gem 'pg'
 gem 'rails_12factor', group: :production

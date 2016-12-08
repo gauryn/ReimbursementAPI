@@ -4,6 +4,7 @@ class Reimbursement < ActiveRecord::Base
 	# belongs_to :event
 	# belongs_to :user_org
 	# belongs_to :organization
+	has_one :receipt
 
 	# Reimbursement Validations
 	validates_numericality_of :total, greater_than: 0

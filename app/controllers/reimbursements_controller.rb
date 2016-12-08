@@ -3,6 +3,9 @@ class ReimbursementsController < ApplicationController
   before_action :check_login
 	before_action :set_reimbursement, only: [:show, :update, :destroy]
 
+  # Register for zipped files
+  Mime::Type.register "application/zip", :zip
+
   # GET /reimbursements
   # GET /reimbursements.json
   def index
@@ -25,6 +28,9 @@ class ReimbursementsController < ApplicationController
   # POST /reimbursements.json
   def create
     @reimbursement = Reimbursement.new(reimbursement_params)
+    # requester set to current user
+    @reimbursement.requester_id = session[:user_id]
+    @reimbursement.request_date = Date.today()
     # @reimbursement.status = 'Submitted'
     if @reimbursement.save
       render json: @reimbursement, status: :created, location: @reimbursement
@@ -40,7 +46,6 @@ class ReimbursementsController < ApplicationController
   # PATCH/PUT /reimbursements/1.json
   def update
     @reimbursement = Reimbursement.find(params[:id])
-
     if @reimbursement.update(reimbursement_params)
       head :no_content
     else
@@ -63,6 +68,6 @@ class ReimbursementsController < ApplicationController
     end
 
     def reimbursement_params
-      params.require(:reimbursement).permit(:total, :description, :request_date, :event_date, :event_name, :event_location, :num_of_attendees, :organization, :requester_id )
+      params.require(:reimbursement).permit(:total, :description, :event_date, :event_name, :event_location, :num_of_attendees, :organization, :receipt_images)
     end
 end
