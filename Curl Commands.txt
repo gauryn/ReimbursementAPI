@@ -15,5 +15,4 @@ curl -v -H 'Content-Type: application/json' -H 'Accept: application/json' -X POS
 - Create New Reimbursement
 curl -v -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -d '{"reimbursement":{"event_date": "2016-11-30", "event_name": "Test Event 2", "event_location": "PWM", "num_of_attendees": 20, "organization": "Emerging Leaders","total": 20,"description": "Test Description 2"}}' https://reimbursementapi.herokuapp.com/reimbursements/
 
-curl -v -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -d '{"receipt":{"event_date": "2016-11-30", "event_name": "Test Event 2", "event_location": "PWM", "num_of_attendees": 20, "organization": "Emerging Leaders","total": 20,"description": "Test Description 2"}}' http://localhost:3000/receipts/
-
+curl -v -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -d '{"reimbursement":{"event_date": "2016-11-30", "event_name": "Test Event 2", "event_location": "PWM", "num_of_attendees": 20, "organization": "Emerging Leaders","total": 20,"description": "Test Description 2"}}' http://localhost:3000/reimbursements/

@@ -38,8 +38,8 @@ gem 'bcrypt'
 # gem 'capistrano-rails', group: :development
 
 # Use Uploader Gem
-gem 'carrierwave'
-gem 'fog'
+# gem 'carrierwave'
+# gem 'fog'
 
 # AWS-SDK Gem for RoR
 gem 'aws-sdk-rails'

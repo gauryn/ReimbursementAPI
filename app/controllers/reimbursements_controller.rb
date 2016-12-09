@@ -3,9 +3,6 @@ class ReimbursementsController < ApplicationController
   before_action :check_login
 	before_action :set_reimbursement, only: [:show, :update, :destroy]
 
-  # Register for zipped files
-  Mime::Type.register "application/zip", :zip
-
   # GET /reimbursements
   # GET /reimbursements.json
   def index
