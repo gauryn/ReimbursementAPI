@@ -24,7 +24,8 @@ class UserOrg < ActiveRecord::Base
 	scope :alphabetical, -> {order('organization')}
 	scope :active, -> {where("end_date is null")}
 	# scope :inactive, -> {where(active: false)}
-	scope :organizations, -> (user_id){group()}
+	# scope :organizations, -> (user_id){group()}
+	scope :organizations, -> (user_id){where("user_id = ?", user_id)}
 	# List of signers for organization
 	# scope :signers_for_organization, -> (organization_id) {where('organization_id=?', organization_id)}
 

@@ -26,14 +26,15 @@ class Reimbursement < ActiveRecord::Base
 	scope :order_total_descending, -> {order('total DESC')}
 	# Order By Event
 	scope :by_event, -> {joins(:event).order('name')}
+	scope :by_organization, -> (name){where("organization = ?", name)}
 	# Status of Reimbursement Request
 	# scope :pending, -> {where(status: 'Pending')}
 	# scope :submitted, -> {where(status: 'Submitted')}
 	# scope :approved, -> {where(status: 'Approved')}
 	# For events, users, orgs
-	scope :for_event, ->(event_id) { where('event_id = ?', event_id) }
-	scope :for_user, -> (user_id) { joins(:user_org).where('user_id = ?', user_id) }
-	scope :for_organization, -> (organization_id) {joins(:event).where('organization_id = ?', organization_id)}
+	# scope :for_event, ->(event_id) { where('event_id = ?', event_id) }
+	# scope :for_user, -> (user_id) { joins(:user_org).where('user_id = ?', user_id) }
+	# scope :for_organization, -> (organization_id) {joins(:event).where('organization_id = ?', organization_id)}
 
 	# Methods
 

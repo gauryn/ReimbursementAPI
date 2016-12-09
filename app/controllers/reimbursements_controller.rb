@@ -6,7 +6,8 @@ class ReimbursementsController < ApplicationController
   # GET /reimbursements
   # GET /reimbursements.json
   def index
-    # TO BE FIXED: Return for user rather than all requests
+    # TO BE FIXED: Return for current user rather than all requests
+    # @orgsForCurrentUser = UserOrg.organizations
     @reimbursements = Reimbursement.chronological
     render json: @reimbursements
   end
@@ -26,7 +27,7 @@ class ReimbursementsController < ApplicationController
   def create
     @reimbursement = Reimbursement.new(reimbursement_params)
     # requester set to current user
-    @reimbursement.requester_id = session[:user_id]
+    # @reimbursement.requester_id = session[:user_id]
     @reimbursement.request_date = Date.today()
     # @reimbursement.status = 'Submitted'
     if @reimbursement.save
