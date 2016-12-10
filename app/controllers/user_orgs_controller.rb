@@ -10,6 +10,13 @@ class UserOrgsController < ApplicationController
     render json: @user_orgs
   end
 
+  # TO BE FIXED: IMPLEMENTED SINCE RELATIONS BETWEEN REIMBURSEMENTS AND OTHER MODELS COMMENTED
+  def get_orgs_for_user
+    user_id = params[:user_id]
+    @user_orgs = UserOrg.organizations(user_id)
+    render json: @user_orgs
+  end
+
   # GET /user_orgs/1
   # GET /user_orgs/1.json
   def show
