@@ -16,7 +16,7 @@ class ApplicationController < ActionController::API
 	helper_method :logged_in?
 
 	def check_login
-		if logged_in?
+		if !logged_in?
 			render json: "Please log in", status: 400
 		end
 	end

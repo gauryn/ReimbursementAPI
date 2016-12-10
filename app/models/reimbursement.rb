@@ -27,6 +27,7 @@ class Reimbursement < ActiveRecord::Base
 	# Order By Event
 	scope :by_event, -> {joins(:event).order('name')}
 	scope :by_organization, -> (name){where("organization = ?", name)}
+	scope :for_user, -> (user_id){where("requester_id=?", user_id)}
 	# Status of Reimbursement Request
 	# scope :pending, -> {where(status: 'Pending')}
 	# scope :submitted, -> {where(status: 'Submitted')}
