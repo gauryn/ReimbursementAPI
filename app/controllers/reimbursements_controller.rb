@@ -1,14 +1,19 @@
 class ReimbursementsController < ApplicationController
 
-  before_action :check_login
+  # TO BE FIXED: Login doesn't work completely since session id is null sometimes
+  # before_action :check_login
 	before_action :set_reimbursement, only: [:show, :update, :destroy]
 
   # GET /reimbursements
   # GET /reimbursements.json
   def index
-    # TO BE FIXED: Return for current user rather than all requests
-    # @orgsForCurrentUser = UserOrg.organizations
     @reimbursements = Reimbursement.chronological
+    render json: @reimbursements
+  end
+
+  def get_requests_for_user
+    user_id = params[:user_id]
+    @reimbursements = Reimbursement.for_user(user_id).chronological
     render json: @reimbursements
   end
 
@@ -66,6 +71,6 @@ class ReimbursementsController < ApplicationController
     end
 
     def reimbursement_params
-      params.require(:reimbursement).permit(:total, :description, :event_date, :event_name, :event_location, :num_of_attendees, :organization, :receipt_images)
+      params.require(:reimbursement).permit(:total, :description, :event_date, :event_name, :event_location, :num_of_attendees, :organization, :receipt_images, :approval_date)
     end
 end
